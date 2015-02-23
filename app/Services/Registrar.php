@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace Grinder\Services;
 
-use App\User;
+use Grinder\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

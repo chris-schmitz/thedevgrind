@@ -1,4 +1,4 @@
-<?php namespace App\Events;
+<?php namespace Grinder\Events;
 
 abstract class Event {
 

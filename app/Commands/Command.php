@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace Grinder\Commands;
 
 abstract class Command {
 

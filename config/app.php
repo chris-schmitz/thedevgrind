@@ -139,11 +139,12 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'App\Providers\AppServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\ConfigServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\RouteServiceProvider',
+		'Grinder\Providers\AppServiceProvider',
+		'Grinder\Providers\BusServiceProvider',
+		'Grinder\Providers\ConfigServiceProvider',
+		'Grinder\Providers\EventServiceProvider',
+		'Grinder\Providers\RouteServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider'
 
 	],
 
@@ -192,7 +193,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-
+        'Form'      => 'Illuminate\Html\FormFacade',
+        'HTML'      => 'Illuminate\Html\HtmlFacade'
 	],
 
 ];

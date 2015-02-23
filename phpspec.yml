@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: Grinder
+        psr4_prefix: Grinder
         src_path: app

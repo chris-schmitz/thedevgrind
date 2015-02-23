@@ -34,6 +34,13 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/">Home</a></li>
+					<li>
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pages <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>{!! link_to_route('page.index', 'All') !!}</li>
+                            <li>{!! link_to_route('page.create', 'Create') !!}</li>
+                        </ul>
+                    </li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -52,8 +59,10 @@
 			</div>
 		</div>
 	</nav>
-
-	@yield('content')
+    
+    <div class="container">
+        @yield('content')
+    </div>
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
