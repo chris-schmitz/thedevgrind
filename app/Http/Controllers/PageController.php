@@ -12,7 +12,7 @@ class PageController extends Controller {
     protected $page;
 
     public function __construct(PageService $page){
-        $this->page = $page;
+        $this->page    = $page;
     }
 
 	/**
@@ -34,7 +34,6 @@ class PageController extends Controller {
 	 */
 	public function create()
 	{
-		//
         return view('pages.create');
 	}
 
@@ -45,8 +44,7 @@ class PageController extends Controller {
 	 */
 	public function store(PageRequest $request)
 	{
-		//
-        $page = $this->page->create($request->all());
+        $this->page->store($request);
         return redirect()->route('page.index');
 	}
 
@@ -86,8 +84,7 @@ class PageController extends Controller {
 	 */
 	public function update(PageRequest $request, $id)
 	{
-        $page = $this->page->byId($id);
-        $page->update($request->all());
+        $this->page->update($id, $request);
         return redirect()->route('page.show', ['page' => $request->get('slug')]);
 	}
 
@@ -99,7 +96,8 @@ class PageController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $this->page->destroy($id);
+        return redirect()->route('page.index');
 	}
 
 }

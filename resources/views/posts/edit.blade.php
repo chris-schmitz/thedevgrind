@@ -4,12 +4,12 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2>Edit the page: <span class="info">{{$page->title}}</span></h2>
+            <h2>Edit the post: <span class="info">{{$post->title}}</span></h2>
         </div>
         <div class="panel-body">
             @include('errors._list')
-            {!! Form::model($page, [ 'method' => 'PUT', 'route' => ['page.update',  $page->id]]) !!}
-                @include('pages.partials.form', ['submitButton' => 'Save Page Edits'])
+            {!! Form::model($post, [ 'method' => 'PUT', 'route' => ['post.update',  $post->id]]) !!}
+                @include('posts.partials.form', ['submitButton' => 'Save Post Edits'])
             {!! Form::close() !!}
         </div>
     </div>

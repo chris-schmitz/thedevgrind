@@ -21,3 +21,4 @@ Route::controllers([
 ]);
 
 Route::resource('page', 'PageController');
+Route::resource('post', 'PostController');

@@ -2,7 +2,7 @@
 
 use Grinder\Http\Requests\Request;
 
-class PageRequest extends Request {
+class PostRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class PageRequest extends Request {
         if($this->isMethod('post')){
             return [
                 'title' => 'required',
-                'slug'  => 'required|unique:pages',
+                'slug'  => 'required|unique:posts',
                 'body'  => 'required'
             ];
         }

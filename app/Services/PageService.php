@@ -1,6 +1,7 @@
 <?php namespace Grinder\Services;
 
 use Grinder\Page;
+use Grinder\Http\Requests\PageRequest;
 
 class PageService {
 
@@ -52,5 +53,34 @@ class PageService {
      */
     public function create($input){
         return $this->page->create($input);
+    }
+
+    /**
+     * Update an existing record.
+     *
+     * @param int id The integer ID of the record to update.
+     *
+     */
+    public function update($id, PageRequest $request){
+        $page = $this->page->find($id);
+        $page->update($request->all());
+    }
+
+    /**
+     * Store a new record.
+     *
+     * @param PageRequest request The PageRequst object to construct the new page from.
+     *
+     */
+    public function store(PageRequest $request){
+        $this->page->create($request->all());
+    }
+    /**
+     * Destroy a page.
+     *
+     * @param int id The primary key of the record to destroy.
+     */
+    public function destroy($id){
+       $this->page->destroy($id);
     }
 }

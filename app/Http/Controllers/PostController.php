@@ -2,10 +2,18 @@
 
 use Grinder\Http\Requests;
 use Grinder\Http\Controllers\Controller;
+use Grinder\Services\PostService;
+use Grinder\Http\Requests\PostRequest;
 
 use Illuminate\Http\Request;
 
 class PostController extends Controller {
+
+    protected $post;
+
+    public function __construct(PostService $post){
+        $this->post    = $post;
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +22,9 @@ class PostController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $posts = $this->post->all();
+
+        return view('posts.index', compact('posts'));
 	}
 
 	/**
@@ -24,7 +34,7 @@ class PostController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        return view('posts.create');
 	}
 
 	/**
@@ -32,9 +42,10 @@ class PostController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(PostRequest $request)
 	{
-		//
+        $this->post->store($request);
+        return redirect()->route('post.index');
 	}
 
 	/**
@@ -43,9 +54,13 @@ class PostController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-		//
+		//Todo: go back and read up on how the app/Exceptions section works. read:
+        //  http://laravel.com/docs/5.0/errors
+        //  http://stackoverflow.com/questions/26630985/how-do-i-catch-exceptions-missing-posts-in-laravel-5
+        $post = $this->post->bySlug($slug);
+        return view('posts.show', compact('post'));
 	}
 
 	/**
@@ -54,9 +69,11 @@ class PostController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($slug)
 	{
 		//
+        $post = $this->post->bySlug($slug);
+        return view('posts.edit', compact('post'));
 	}
 
 	/**
@@ -65,9 +82,10 @@ class PostController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(PostRequest $request, $id)
 	{
-		//
+        $this->post->update($id, $request);
+        return redirect()->route('post.show', ['post' => $request->get('slug')]);
 	}
 
 	/**
@@ -78,7 +96,8 @@ class PostController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $this->post->destroy($id);
+        return redirect()->route('post.index');
 	}
 
 }
