@@ -20,5 +20,24 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::resource('page', 'PageController');
-Route::resource('post', 'PostController');
+Route::group(['middleware' => 'auth'], function (){
+    Route::get('page/create', [ 'as' => 'page.create', 'uses' => 'PageController@create']);
+    Route::post('page', [ 'as' => 'page.store', 'uses' => 'PageController@store']);
+    Route::get('page/{page}/edit', [ 'as' => 'page.edit', 'uses' => 'PageController@edit']);
+    Route::put('page/{page}', [ 'as' => 'page.update', 'uses' => 'PageController@update']);
+    Route::patch('page/{page}', [ 'uses' => 'PageController@update']);
+    Route::delete('page/{page}', [ 'as' => 'page.destroy', 'uses' => 'PageController@destroy']);
+});
+Route::get('page', ['as' => 'page.index', 'uses' => 'PageController@index']);
+Route::get('page/{page}', [ 'as' => 'page.show', 'uses' => 'PageController@show']);
+
+Route::group(['middleware' => 'auth'], function (){
+    Route::get('post/create', [ 'as' => 'post.create', 'uses' => 'PostController@create']);
+    Route::post('post', [ 'as' => 'post.store', 'uses' => 'PostController@store']);
+    Route::get('post/{post}/edit', [ 'as' => 'post.edit', 'uses' => 'PostController@edit']);
+    Route::put('post/{post}', [ 'as' => 'post.update', 'uses' => 'PostController@update']);
+    Route::patch('post/{post}', [ 'uses' => 'PostController@update']);
+    Route::delete('post/{post}', [ 'as' => 'post.destroy', 'uses' => 'PostController@destroy']);
+});
+Route::get('post', ['as' => 'post.index', 'uses' => 'PostController@index']);
+Route::get('post/{post}', [ 'as' => 'post.show', 'uses' => 'PostController@show']);

@@ -59,7 +59,11 @@ class PageController extends Controller {
 		//Todo: go back and read up on how the app/Exceptions section works. read:
         //  http://laravel.com/docs/5.0/errors
         //  http://stackoverflow.com/questions/26630985/how-do-i-catch-exceptions-missing-pages-in-laravel-5
-        $page = $this->page->bySlug($slug);
+        try{
+            $page = $this->page->bySlug($slug);
+        }catch( \Illuminate\Database\Eloquent\ModelNotFoundException $exception){
+            abort(404);
+        };
         return view('pages.show', compact('page'));
 	}
 
