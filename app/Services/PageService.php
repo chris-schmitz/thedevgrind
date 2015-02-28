@@ -10,6 +10,18 @@ class PageService {
     public function __construct(Page $page){
         $this->page = $page;
     }
+
+    /**
+     * Return pages marked for navbar
+     *
+     * @return  \Illuminate\Database\Eloquent\Collection
+     */
+    public function navPageList(){
+
+        return $this->page->where('showInNavbar', true)->orderBy('order')->lists('title', 'slug');
+    }
+
+
     /**
      * Get all pages.
      * 

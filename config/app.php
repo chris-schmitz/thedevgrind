@@ -144,6 +144,8 @@ return [
 		'Grinder\Providers\ConfigServiceProvider',
 		'Grinder\Providers\EventServiceProvider',
 		'Grinder\Providers\RouteServiceProvider',
+        'Grinder\Providers\ViewComposerServiceProvider',
+
         'Illuminate\Html\HtmlServiceProvider'
 
 	],
