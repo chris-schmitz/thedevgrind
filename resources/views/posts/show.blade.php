@@ -13,7 +13,7 @@
         <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-            {{ $post->body }}
+            {!! Markdown::defaultTransform( $post->body ) !!}
 
             <hr>
             <div id="disqus_thread"></div>

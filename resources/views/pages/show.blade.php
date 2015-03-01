@@ -13,7 +13,7 @@
         <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-            {{ $page->body }}
+            {!! Markdown::defaultTransform( $page->body ) !!}
         </div>
         @if(Auth::check() && Auth::user()->administrator)
             <div class="panel-footer clearfix">
