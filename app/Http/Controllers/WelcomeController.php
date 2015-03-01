@@ -1,5 +1,7 @@
 <?php namespace Grinder\Http\Controllers;
 
+use Grinder\Services\PostService;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -20,7 +22,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+		//$this->middleware('guest');
 	}
 
 	/**
@@ -28,9 +30,11 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(PostService $post)
 	{
-		return view('welcome');
+
+        $lastSix = $post->sixMostRecent();
+		return view('welcome', compact('lastSix'));
 	}
 
 }

@@ -22,6 +22,11 @@ class PostService {
         return $this->post->all();
     }
 
+    public function sixMostRecent(){
+        return $this->post->all()->take(6);
+    }
+
+
     /**
      * Get the post by the slug value.
      *

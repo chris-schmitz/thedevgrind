@@ -24,4 +24,10 @@
         @endif
     </div>
 
+<script>
+        var Showdown = require('showdown');
+        var converter = new Showdown.converter();
+        converter.makeHtml('#hello markdown!');
+</script>
+
 @endsection

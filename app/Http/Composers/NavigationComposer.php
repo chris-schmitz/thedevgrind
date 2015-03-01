@@ -11,7 +11,6 @@ class NavigationComposer {
     }
 
     public function compose(View $view){
-        // get list of pages and pass into navbar view
 
         // as you add in anything else that needs to be in the navbar
         // make sure you update this method to include it. Things
