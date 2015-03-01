@@ -25,7 +25,11 @@
     @include('partials.navbar')
     <div class="container">
         @yield('content')
+
     </div>
+        <footer class="navbar-static-bottom">
+            {!! link_to_route('page.show', "Privacy Policy & End User Agrement", ['page' => 'legalese']) !!}
+        </footer>
 
 
 	<!-- Scripts -->
