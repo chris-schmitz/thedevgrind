@@ -33,3 +33,9 @@ Posts
 Posts work much the same ay that pages do, but they do not display in the navbar. An index of posts can be found under the `Blog` section of the navbar.
 
 The most recent 6 posts also show by default on the welcome page. 
+
+---
+
+# Progress
+
+If you would like to see how I'm organizing the work on this project you can visit my Trello board for [TheDevGrnd](https://trello.com/b/WBkK19Ji/the-dev-grind).
