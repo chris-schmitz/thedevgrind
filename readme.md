@@ -38,4 +38,4 @@ The most recent 6 posts also show by default on the welcome page.
 
 # Progress
 
-If you would like to see how I'm organizing the work on this project you can visit my Trello board for [TheDevGrnd](https://trello.com/b/WBkK19Ji/the-dev-grind).
+If you would like to see how I'm organizing the work on this project you can visit my Trello board for [TheDevGrind](https://trello.com/b/WBkK19Ji/the-dev-grind).
