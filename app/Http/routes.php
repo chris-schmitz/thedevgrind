@@ -14,7 +14,7 @@
 /*
 | This is a test controller. It should be commented out on production push.
 */
-Route::get('dev', 'DevController@test');
+//Route::get('dev', 'DevController@test');
 
 Route::get('/', 'WelcomeController@index');
 
