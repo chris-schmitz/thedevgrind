@@ -3,6 +3,8 @@
 use Grinder\Post;
 use Grinder\Http\Requests\PostRequest;
 
+use \Auth;
+
 class PostService {
 
     protected $post;
@@ -10,20 +12,28 @@ class PostService {
     public function __construct(Post $post){
         $this->post = $post;
     }
+
+    // Todo: all of this `Auth::check()` smells funny. It works at the moment, but consider ways of cleaning it up or optimizing.
+
     /**
      * Get all posts.
      * 
      * @return  \Illuminate\Database\Eloquent\Collection
      */
     public function all(){
-        // ToDo: if we add any admin-only posts, we should add some middleware
-        // to the service so that only authenticated users can get to into
-        // the admin only posts. 
-        return $this->post->all();
+        if(Auth::check()){
+            return $this->post->all();
+        } else {
+            return $this->post->where('published', true)->get();
+        }
     }
 
     public function sixMostRecent(){
-        return $this->post->all()->take(6);
+        if(Auth::check()){
+            return $this->post->all()->take(6);
+        } else {
+            return $this->post->where('published', true)->get()->take(6);
+        }
     }
 
 
@@ -35,7 +45,11 @@ class PostService {
      * @return Eloquent model
      */
     public function bySlug($slug){
-        return $this->post->where('slug', $slug)->firstOrFail();
+        if(Auth::check()){
+            return $this->post->where('slug', $slug)->firstOrFail();
+        } else {
+            return $this->post->where([ 'slug' => $slug, 'published' => true])->firstOrFail();
+        }
     }
 
     /**
@@ -46,7 +60,11 @@ class PostService {
      * @return Eloquent model
      */
     public function byId($id){
-        return $this->post->findOrFail($id);
+        if(Auth::check()){
+            return $this->post->findOrFail($id);
+        } else {
+            return $this->post->where('published', true)->findOrFail($id);
+        }
     }
 
     /**
