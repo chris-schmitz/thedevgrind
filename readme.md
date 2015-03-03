@@ -13,7 +13,8 @@ Really, I have the project tailored for what I need, but the project is a genera
 
 Important
 ---------
-**This is an in progress project**. Not everything's finished and web interfaces don't exist for all of the tools.
+**This is an in progress project**. 
+Not everything's finished and web interfaces don't exist for all of the tools.
 
 Users
 -----
