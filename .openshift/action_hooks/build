@@ -17,3 +17,8 @@ else
         cd $OPENSHIFT_REPO_DIR ; 
         php $OPENSHIFT_DATA_DIR/composer.phar -q --no-ansi install ;
 fi
+
+if [ ! -f "$OPENSHIFT_REPO_DIR/.env" ]; then
+        echo 'Installing openshift .env file'
+        cp "$OPENSHIFT_DATA_DIR/.env" "$OPENSHIFT_REPO_DIR"
+fi
