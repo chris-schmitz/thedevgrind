@@ -4,18 +4,19 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading">
-                <h2>{{ $post->title  }} 
-                    @if(Auth::check() && Auth::user()->administrator)
-                        <small>{!! link_to_route('post.edit', "edit", ['post' => $post->slug]) !!}</small>
-                        @if($post->published)
-                            <div class="pull-right">Published: True</div>
-                        @else
-                            <div class="pull-right">Published: False</div>
-                        @endif
-                    @endif
-                </h2>
-        <div class="clearfix"></div>
+        <div class="panel-heading ">
+            <h2>
+                {{ $post->title  }} 
+                @if(Auth::check() && Auth::user()->administrator)
+                    <small>{!! link_to_route('post.edit', "edit", ['post' => $post->slug]) !!}</small>
+                @endif
+
+                @if($post->published)
+                    <h6 class="">Published on : {{ $post->published_on }}</h6>
+                @else
+                    <h6 class="">Published: False</h6>
+                @endif
+            </h2>
         </div>
         <div class="panel-body">
             {!! Markdown::defaultTransform( $post->body ) !!}
