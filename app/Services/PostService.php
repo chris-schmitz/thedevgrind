@@ -86,6 +86,7 @@ class PostService {
      */
     public function update($id, PostRequest $request){
         $post = $this->post->find($id);
+        $request[ 'published' ] = $request->has('published');
         $post->update($request->all());
     }
 

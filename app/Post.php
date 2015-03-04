@@ -9,6 +9,7 @@ class Post extends Model {
         'title',
         'slug',
         'published_on',
-        'body'
+        'body',
+        'published'
     ];
 }

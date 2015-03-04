@@ -8,6 +8,11 @@
                 <h2>{{ $post->title  }} 
                     @if(Auth::check() && Auth::user()->administrator)
                         <small>{!! link_to_route('post.edit', "edit", ['post' => $post->slug]) !!}</small>
+                        @if($post->published)
+                            <div class="pull-right">Published: True</div>
+                        @else
+                            <div class="pull-right">Published: False</div>
+                        @endif
                     @endif
                 </h2>
         <div class="clearfix"></div>
