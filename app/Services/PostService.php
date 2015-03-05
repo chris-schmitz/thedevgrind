@@ -22,9 +22,9 @@ class PostService {
      */
     public function all(){
         if(Auth::check()){
-            return $this->post->all();
+            return $this->post->orderBy('id', 'desc')->get();
         } else {
-            return $this->post->where('published', true)->get();
+            return $this->post->where('published', true)->orderBy('id', 'desc')->get();
         }
     }
 

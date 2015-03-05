@@ -11,15 +11,22 @@
         <div class="panel-heading">
             <h2>All Blog Posts</h2>
         </div>
-        <div class="panel-body">
-            <ul>
+        <table class="table">
+            <tr>
+                <th>Post</th>
+                <th>Published on</th>
+            </tr>
             @foreach($posts as $post)
-                <li>
-                    {!! link_to_route('post.show', $post->title, ['post' => $post->slug]) !!}
-                </li>
+                <tr>
+                    <td>
+                        {!! link_to_route('post.show', $post->title, ['post' => $post->slug]) !!} 
+                    </td>
+                    <td>
+                        {{ $post->published_on }}
+                    </td>
+                </tr>
             @endforeach
-            </ul>
-        </div>
+        </table>
     </div>
 
 @endsection

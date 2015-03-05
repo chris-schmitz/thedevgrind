@@ -1,6 +1,6 @@
 
 <div class="form-group">
-    {!! Form::checkbox('published', null, ['class' => 'checkbox']) !!}
+    {!! Form::checkbox('published', null) !!}
     {!! Form::label('Publish', '') !!}
 </div>
 <div class="form-group">
