@@ -30,9 +30,9 @@ class PostService {
 
     public function sixMostRecent(){
         if(Auth::check()){
-            return $this->post->all()->take(6);
+            return $this->post->orderBy('id', 'desc')->get()->take(6);
         } else {
-            return $this->post->where('published', true)->get()->take(6);
+            return $this->post->where('published', true)->orderBy('id', 'desc')->get()->take(6);
         }
     }
 
