@@ -46,3 +46,6 @@ Route::group(['middleware' => 'auth'], function (){
 });
 Route::get('post', ['as' => 'post.index', 'uses' => 'PostController@index']);
 Route::get('post/{post}', [ 'as' => 'post.show', 'uses' => 'PostController@show']);
+
+Route::get('tags', ['as' => 'tag.index', 'uses' => 'TagsController@index']);
+Route::delete('tags', ['as' => 'tag.destroy', 'uses' => 'TagsController@index']);

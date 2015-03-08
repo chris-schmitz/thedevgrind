@@ -12,4 +12,8 @@ class Post extends Model {
         'body',
         'published'
     ];
+
+    public function tags(){
+        return $this->belongsToMany('Grinder\Tag');
+    }
 }
